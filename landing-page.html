@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSand - World's First Sand-Backed Cryptocurrency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23c9a961" opacity="0.1" width="1200" height="600"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%);
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .highlight {
+            color: #c9a961;
+            font-style: italic;
+        }
+
+        .hero .tagline {
+            font-size: 28px;
+            color: #c9a961;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero .subtext {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .value-proposition {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-item .number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #c9a961;
+            display: block;
+        }
+
+        .value-item .label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%);
+            color: #1a1a1a;
+            padding: 18px 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            border: 2px solid #c9a961;
+            padding: 16px 48px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 80px 20px;
+            background: #f8f8f8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #c9a961;
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .solution-card {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            border-color: #c9a961;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .solution-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .solution-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .solution-card .highlight-number {
+            display: block;
+            font-size: 32px;
+            font-weight: bold;
+            color: #c9a961;
+            margin: 15px 0;
+        }
+
+        /* Value Ascension */
+        .value-ascension {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .ascension-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .ascension-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .ascension-step .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: #c9a961;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .ascension-step .phase {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .arrow {
+            font-size: 36px;
+            color: #c9a961;
+        }
+
+        /* Testimonials/Social Proof */
+        .testimonials {
+            padding: 80px 20px;
+            background: #f8f8f8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stat-card .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #c9a961;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-label {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Investment Packages */
+        .packages {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .package-card.featured {
+            border-color: #c9a961;
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.2);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c9a961;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .package-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .package-price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+
+        .package-detail {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: #c9a961;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
+            background: #f8f8f8;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 28px;
+            color: #c9a961;
+        }
+
+        .faq-answer {
+            padding: 0 30px 25px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #c9a961;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .tagline {
+                font-size: 20px;
+            }
+
+            .hero .subtext {
+                font-size: 16px;
+            }
+
+            .value-proposition {
+                gap: 20px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .ascension-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+            .package-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">eS</div>
+            <h1>The World's First <span class="highlight">Sand-Backed</span> Cryptocurrency</h1>
+            <p class="tagline">Real Sand. Real Value. Real Returns.</p>
+            <p class="subtext">
+                eSand is a MiCA-compliant Asset-Referenced Token (ART) backed by physical high-grade silica sand—
+                a critical resource powering solar energy, semiconductors, and the green transition.
+            </p>
+
+            <div class="value-proposition">
+                <div class="value-item">
+                    <span class="number">1:1</span>
+                    <span class="label">Token to Metric Ton</span>
+                </div>
+                <div class="value-item">
+                    <span class="number">$30→$10K</span>
+                    <span class="label">Value Ascension</span>
+                </div>
+                <div class="value-item">
+                    <span class="number">50M</span>
+                    <span class="label">Tons Reserve</span>
+                </div>
+                <div class="value-item">
+                    <span class="number">$16B</span>
+                    <span class="label">Total Net Profit</span>
+                </div>
+            </div>
+
+            <div>
+                <a href="#packages" class="cta-primary">View Investment Packages</a>
+                <a href="#solution" class="cta-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2>The Challenge Facing Modern Investors</h2>
+                <p>Traditional crypto lacks real-world backing. Commodities lack digital liquidity. You deserve both.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>🎲 Speculative Volatility</h3>
+                    <p>Most cryptocurrencies are purely speculative with no intrinsic value or physical backing, exposing investors to extreme volatility.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3>🔒 Illiquid Commodities</h3>
+                    <p>Physical commodity investments traditionally require massive capital, lack transparency, and offer limited liquidity.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3>📉 Missing Real Returns</h3>
+                    <p>Investors lack access to industrial-grade opportunities that generate both appreciation and passive income from real operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2>How eSand Solves This</h2>
+                <p>The world's first phygital commodity—merging physical assets with digital innovation</p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🏛️</div>
+                    <h3>Asset-Backed Security</h3>
+                    <p>Each eSand token represents 1 metric ton of verified high-grade silica sand under international auditing standards.</p>
+                    <span class="highlight-number">1:1 Backing</span>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">⚖️</div>
+                    <h3>MiCA Regulated</h3>
+                    <p>Fully compliant Asset-Referenced Token (ART) issued by Thesaur Quantum Minerals AG in Liechtenstein.</p>
+                    <span class="highlight-number">EU Compliant</span>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">📈</div>
+                    <h3>Value Appreciation</h3>
+                    <p>As raw sand is processed into high-tech materials, token value mirrors industrial upgrading.</p>
+                    <span class="highlight-number">25x-33x Potential</span>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">💰</div>
+                    <h3>Passive Income</h3>
+                    <p>Token holders earn periodic rewards (7.5%-15%) based on actual profits from industrial operations.</p>
+                    <span class="highlight-number">Real Dividends</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE ASCENSION -->
+    <section class="value-ascension">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 style="color: white;">Exponential Value Creation</h2>
+                <p style="color: rgba(255,255,255,0.8);">Watch your investment grow as raw sand transforms into high-tech materials</p>
+            </div>
+
+            <div class="ascension-flow">
+                <div class="ascension-step">
+                    <span class="price">$30</span>
+                    <span class="phase">Raw Silica Sand</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="ascension-step">
+                    <span class="price">$1,000</span>
+                    <span class="phase">Phase 1: HPQS Processing</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="ascension-step">
+                    <span class="price">$10,000</span>
+                    <span class="phase">Phase 2: Silicon Products</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / STATS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2>Backed by Real-World Performance</h2>
+                <p>Thesaur project metrics demonstrate massive industrial potential</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Years Project Lifecycle</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">$22B</span>
+                    <span class="stat-label">Total Projected Revenue</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">570%</span>
+                    <span class="stat-label">Internal Rate of Return</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">$84M</span>
+                    <span class="stat-label">Founder Equity Contributed</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">€200M</span>
+                    <span class="stat-label">Annual Offtake Agreements</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">50M</span>
+                    <span class="stat-label">Token Supply Cap</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT PACKAGES -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2>Early Investor Packages</h2>
+                <p>Secure your position with exclusive pricing and equity rights</p>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Super Deal</h3>
+                    <div class="package-price">$15</div>
+                    <div class="package-detail">per eSand token</div>
+                    <ul class="package-features">
+                        <li>2,000,000 tokens available</li>
+                        <li>100% vesting for 18 months</li>
+                        <li>0.1% equity rights per $100k</li>
+                        <li>Priority allocation</li>
+                        <li>Early rewards access</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">MOST POPULAR</div>
+                    <h3>Plus Deal</h3>
+                    <div class="package-price">$25</div>
+                    <div class="package-detail">per eSand token</div>
+                    <ul class="package-features">
+                        <li>1,000,000 tokens available</li>
+                        <li>70% vesting for 18 months</li>
+                        <li>0.1% equity rights per $150k</li>
+                        <li>Enhanced liquidity</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                </div>
+
+                <div class="package-card">
+                    <h3>Premium Deal</h3>
+                    <div class="package-price">$30</div>
+                    <div class="package-detail">per eSand token</div>
+                    <ul class="package-features">
+                        <li>2,000,000 tokens available</li>
+                        <li>No vesting period</li>
+                        <li>0.1% equity rights per $200k</li>
+                        <li>Immediate liquidity</li>
+                        <li>VIP access</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8f8f8; border-radius: 15px;">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Institutional & Large Investors</h3>
+                <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+                    Custom packages available from $1M to $40M with enhanced equity participation (1%-30%)<br>
+                    ROI projections: 971% in 5 years | 2,530% in 10 years | 13,752% in 33 years
+                </p>
+                <a href="#contact" class="cta-primary">Request Custom Proposal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about investing in eSand</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What exactly is eSand?</div>
+                    <div class="faq-answer">
+                        eSand is the world's first MiCA-compliant Asset-Referenced Token (ART) where each token represents ownership of 1 metric ton of verified high-grade silica sand. It's a "phygital" asset combining physical commodity backing with digital token benefits.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How does the value appreciation work?</div>
+                    <div class="faq-answer">
+                        As the underlying physical sand is processed through Thesaur's operations—from raw material ($30/ton) to high-purity quartz sand ($1,000/ton) to advanced silicon products ($10,000/ton)—the token value mirrors this industrial upgrading curve.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What are the passive income rewards?</div>
+                    <div class="faq-answer">
+                        Token holders receive periodic pro-rata rewards (7.5%-15% range) based on actual profits from Thesaur's industrial operations. These are real dividends from revenue-generating activities, not speculative yields.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is this regulated and compliant?</div>
+                    <div class="faq-answer">
+                        Yes. eSand is issued by Thesaur Quantum Minerals AG, a Liechtenstein-based company authorized under TVTG and fully compliant with EU's Markets in Crypto Assets Regulation (MiCA). It's classified as an Asset-Referenced Token (ART) under Title III.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is the minimum investment?</div>
+                    <div class="faq-answer">
+                        The minimum entry is $100,000 for the first million tokens at $10/token. This includes token allocation plus optional equity rights participation in the Thesaur industrial project.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I redeem my tokens for cash?</div>
+                    <div class="faq-answer">
+                        Yes. Each investor has the right to request redemption of their tokens for an equivalent monetary value corresponding to their initial investment, ensuring a reliable digital representation of tangible value.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">When will tokens be tradeable on exchanges?</div>
+                    <div class="faq-answer">
+                        Once the Whitepaper receives full MiCA authorization, eSand will be listed on leading DEX and CEX exchanges including Binance, ByBit, and Coinbase, ensuring global accessibility and liquidity.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Secure Your Position in the Future of Phygital Assets</h2>
+            <p>Limited token supply. First-come, first-served pricing tiers.</p>
+            <div>
+                <a href="mailto:invest@esand.io" class="cta-primary">Schedule a Call</a>
+                <a href="#" class="cta-secondary">Download Full Whitepaper</a>
+            </div>
+            <p style="margin-top: 40px; font-size: 16px; opacity: 0.7;">
+                ✓ MiCA Compliant &nbsp;&nbsp; ✓ Asset-Backed &nbsp;&nbsp; ✓ Industrial Revenue &nbsp;&nbsp; ✓ 40+ Year Project
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 eSand / Thesaur Quantum Minerals AG. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms & Conditions</a> |
+                <a href="#">Risk Disclosure</a> |
+                <a href="mailto:invest@esand.io">invest@esand.io</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
+                This is not financial advice. Past performance does not guarantee future results. Cryptocurrency investments carry risk.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                document.querySelectorAll('.faq-question').forEach(q => q.style.background = '');
+
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    this.style.background = '#f8f8f8';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
