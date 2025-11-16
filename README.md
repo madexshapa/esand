@@ -107,7 +107,8 @@ eSand/
 
 ## 🔗 Links
 
-- **Website**: [Coming Soon]
+- **Website**: https://andreishapa.github.io/esand/
+- **GitHub Repository**: https://github.com/AndreiShapa/esand
 - **Whitepaper**: [Request Access]
 - **Investment Deck**: [Available in PDF]
 - **Contact**: invest@esand.io
