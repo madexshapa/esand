@@ -100,15 +100,15 @@ This landing page is built with:
 
 ```
 eSand/
-├── landing-page.html    # Main landing page
-├── README.md           # This file
+├── index.html         # Main landing page
+├── README.md          # This file
 └── docs/              # Additional documentation (coming soon)
 ```
 
 ## 🔗 Links
 
-- **Website**: https://andreishapa.github.io/esand/
-- **GitHub Repository**: https://github.com/AndreiShapa/esand
+- **Website**: https://madexshapa.github.io/esand/
+- **GitHub Repository**: https://github.com/madexshapa/esand
 - **Whitepaper**: [Request Access]
 - **Investment Deck**: [Available in PDF]
 - **Contact**: invest@esand.io
