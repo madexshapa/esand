@@ -265,8 +265,17 @@ function showQuestion(num) {
     // Update email capture title with actual discount
     if (num === 4) {
         const emailTitle = document.getElementById('emailCaptureTitle');
+        const upgradeMessage = document.getElementById('upgradeMessage');
+
         if (emailTitle) {
             emailTitle.textContent = `Claim Your ${state.discount}% Discount`;
+        }
+
+        // Show upgrade message if discount is less than 15%
+        if (upgradeMessage && state.discount < 15) {
+            upgradeMessage.style.display = 'block';
+        } else if (upgradeMessage) {
+            upgradeMessage.style.display = 'none';
         }
     }
 
