@@ -365,10 +365,11 @@
         }
 
         .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 40px;
             margin-top: 40px;
+            justify-content: center;
         }
 
         .solution-card {
@@ -377,6 +378,7 @@
             border: 2px solid #f0f0f0;
             border-radius: 15px;
             transition: all 0.3s;
+            flex: 0 1 350px;
         }
 
         .solution-card:hover {
@@ -419,7 +421,7 @@
         /* Phygital Ecosystem */
         .phygital-ecosystem {
             padding: 80px 20px;
-            background: white;
+            background: #f8f8f8;
         }
 
         .ecosystem-flow {
@@ -603,12 +605,12 @@
         /* Testimonials/Social Proof */
         .testimonials {
             padding: 80px 20px;
-            background: #f0f0f0;
+            background: white;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
@@ -637,7 +639,7 @@
         /* Project Roadmap */
         .roadmap {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            background: #f8f8f8;
             overflow: hidden;
         }
 
@@ -1077,6 +1079,10 @@
             .ecosystem-message p {
                 font-size: 18px;
             }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1150,10 +1156,24 @@
 
             <div class="solution-grid">
                 <div class="solution-card">
-                    <div class="solution-icon">🏛️</div>
-                    <h3>Asset-Backed Security</h3>
-                    <p>Each eSand token represents 1 metric ton of verified high-grade silica sand under international auditing standards.</p>
-                    <span class="highlight-number">1:1 Backing</span>
+                    <div class="solution-icon">📈</div>
+                    <h3>Capital Appreciation</h3>
+                    <p>Exponential token value growth mirroring industrial transformation from raw sand to high-tech materials.</p>
+                    <span class="highlight-number">25x-33x Potential</span>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">💰</div>
+                    <h3>Passive Income Rewards</h3>
+                    <p>Periodic rewards from eSand token operations including buy-back strategies and treasury mechanisms.</p>
+                    <span class="highlight-number">7.5%-15% Annual</span>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🏭</div>
+                    <h3>Industrial Profit Share</h3>
+                    <p>Institutional investors with equity participation receive profit distributions from Thesaur's industrial operations.</p>
+                    <span class="highlight-number">971% Equity ROI (5 years)</span>
                 </div>
 
                 <div class="solution-card">
@@ -1164,61 +1184,10 @@
                 </div>
 
                 <div class="solution-card">
-                    <div class="solution-icon">📈</div>
-                    <h3>Value Appreciation</h3>
-                    <p>As raw sand is processed into high-tech materials, token value mirrors industrial upgrading.</p>
-                    <span class="highlight-number">25x-33x Potential</span>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">💰</div>
-                    <h3>Passive Income</h3>
-                    <p>Token holders earn periodic rewards (7.5%-15%) based on actual profits from industrial operations.</p>
-                    <span class="highlight-number">Real Dividends</span>
-                </div>
-
-                <div class="solution-card">
                     <div class="solution-icon">📊</div>
                     <h3>Full Transparency</h3>
                     <p>Independent audits, regular reporting, and complete visibility into reserves, operations, and financial performance.</p>
                     <span class="highlight-number">Audited</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRIPLE-YIELD STRUCTURE -->
-    <section class="solution" id="triple-yield">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">2</span>
-                <h2>Triple-Yield Structure</h2>
-                <p>Three distinct revenue streams maximizing your investment returns</p>
-            </div>
-
-            <div class="solution-grid">
-                <div class="solution-card">
-                    <div class="solution-icon">📈</div>
-                    <h3>Capital Appreciation</h3>
-                    <p>Exponential token value growth mirroring industrial transformation from raw sand to high-tech materials.</p>
-                    <span class="highlight-number">25x-33x Potential</span>
-                    <p style="font-size: 14px; color: #999; margin-top: 10px;">$30 → $800-$1,000 (24-36 months)<br>Up to 323x modeled long-term</p>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">💰</div>
-                    <h3>Passive Income Rewards</h3>
-                    <p>Periodic rewards from eSand token operations including buy-back strategies and treasury mechanisms.</p>
-                    <span class="highlight-number">7.5%-15% Annual</span>
-                    <p style="font-size: 14px; color: #999; margin-top: 10px;">Based on token allocation and tier<br>Distributed from token operations</p>
-                </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon">🏭</div>
-                    <h3>Industrial Profit Share</h3>
-                    <p>Institutional investors with equity participation receive profit distributions from Thesaur's industrial operations.</p>
-                    <span class="highlight-number">971% Equity ROI (5 years)</span>
-                    <p style="font-size: 14px; color: #999; margin-top: 10px;">For $1M+ equity investors<br>2,530% in 10 years | 13,752% in 33 years</p>
                 </div>
             </div>
         </div>
@@ -1237,9 +1206,9 @@
                 <!-- Physical Side -->
                 <div class="ecosystem-side physical-side">
                     <div class="side-header">
-                        <div class="side-icon">🏭</div>
                         <h3>Physical</h3>
                         <p class="side-label">Thesaur - RWA</p>
+                        <p style="font-size: 14px; color: #666; margin-top: 10px; line-height: 1.5;">Physical operations generate profits through sand mining and sales to industry partners.</p>
                     </div>
                     <div class="flow-steps">
                         <div class="flow-step">
@@ -1280,9 +1249,9 @@
                 <!-- Digital Side -->
                 <div class="ecosystem-side digital-side">
                     <div class="side-header">
-                        <div class="side-icon">💎</div>
                         <h3>Digital</h3>
                         <p class="side-label">eSand - ART</p>
+                        <p style="font-size: 14px; color: #666; margin-top: 10px; line-height: 1.5;">Digital tokens represent ownership, deliver annual returns, and enable trading on global exchanges.</p>
                     </div>
                     <div class="flow-steps">
                         <div class="flow-step">
@@ -1310,14 +1279,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Key Message -->
-            <div class="ecosystem-message">
-                <p>
-                    <strong>Physical operations generate profits through sand mining and sales to industry partners.<br>
-                    Digital tokens represent ownership, deliver annual returns, and enable trading on global exchanges.</strong>
-                </p>
             </div>
         </div>
     </section>
@@ -1520,26 +1481,33 @@
                     <p class="team-bio">Accomplished Chief Executive Officer with 18+ years in aggregates extraction and processing. Directed fine sand production operations serving major industry players.</p>
                 </div>
 
-                <div class="team-member">
+                <div class="team-member team-member-hidden" style="display: none;">
                     <div class="team-avatar">LL</div>
                     <h3>Lajos Losonczi, PhD</h3>
                     <p class="team-role">Chief Science Officer</p>
                     <p class="team-bio">Renowned semiconductor expert with 47-year career. Holds numerous patents in semiconductor technology with deep understanding of materials science and device fabrication.</p>
                 </div>
 
-                <div class="team-member">
+                <div class="team-member team-member-hidden" style="display: none;">
                     <div class="team-avatar">MR</div>
                     <h3>Mircea Dragos Radu, PhD</h3>
                     <p class="team-role">CFO</p>
                     <p class="team-bio">38 years in organizational administration with 22 years as accounting expert and tax consultant. Proven track record in optimizing financial performance.</p>
                 </div>
 
-                <div class="team-member">
+                <div class="team-member team-member-hidden" style="display: none;">
                     <div class="team-avatar">TV</div>
                     <h3>Tudor Vesa, MSc</h3>
                     <p class="team-role">CTO/CIO, Head of Dev Team</p>
                     <p class="team-bio">Software architect and IT entrepreneur leading custom multi-channel integrated solutions. MSc in Computer Science with Juris Doctor degree bridging technology and law.</p>
                 </div>
+            </div>
+
+            <!-- View More Team Button -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="viewMoreTeamBtn" class="cta-secondary" style="cursor: pointer; border: none;">
+                    Meet the Full Team →
+                </button>
             </div>
         </div>
     </section>
@@ -1882,6 +1850,22 @@
                 }
             });
         });
+
+        // Team "Meet the Full Team" button functionality
+        const viewMoreTeamBtn = document.getElementById('viewMoreTeamBtn');
+        if (viewMoreTeamBtn) {
+            viewMoreTeamBtn.addEventListener('click', function() {
+                const hiddenMembers = document.querySelectorAll('.team-member-hidden');
+                const isExpanded = hiddenMembers[0].style.display !== 'none';
+
+                hiddenMembers.forEach(member => {
+                    member.style.display = isExpanded ? 'none' : 'block';
+                });
+
+                // Update button text
+                this.textContent = isExpanded ? 'Meet the Full Team →' : 'Show Less ←';
+            });
+        }
     </script>
 
     <!-- Dynamic Content Loading -->
