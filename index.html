@@ -23,11 +23,153 @@
             padding: 0 20px;
         }
 
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c9a961;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0 0 0 40px;
+            padding: 0;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .nav-menu li a:hover {
+            color: #c9a961;
+        }
+
+        /* Push action buttons to the right */
+        .nav-menu li:nth-child(6) {
+            margin-left: auto;
+        }
+
+        /* Make Invest Now closer to Sign Up */
+        .nav-menu li:nth-child(7) {
+            margin-left: -15px;
+        }
+
+        .nav-menu li a.nav-secondary-cta {
+            border: 2px solid #c9a961;
+            color: #c9a961;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a.nav-secondary-cta:hover {
+            background: rgba(201, 169, 97, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu li a.nav-cta {
+            background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%);
+            color: #1a1a1a;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .nav-menu li a.nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: auto;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #c9a961;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+                gap: 20px;
+                margin: 0;
+                flex: none;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li:nth-child(6) {
+                margin-left: 0;
+            }
+
+            .nav-menu li:nth-child(7) {
+                margin-left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
-            padding: 100px 20px;
+            padding: 140px 20px 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -135,7 +277,7 @@
         .cta-secondary {
             display: inline-block;
             background: transparent;
-            color: white;
+            color: #c9a961;
             border: 2px solid #c9a961;
             padding: 16px 48px;
             font-size: 20px;
@@ -150,10 +292,48 @@
             background: rgba(201, 169, 97, 0.1);
         }
 
-        /* Problem Section */
-        .problem {
-            padding: 80px 20px;
-            background: #f8f8f8;
+        /* Override secondary button color when on dark backgrounds */
+        .hero .cta-secondary {
+            color: white;
+        }
+
+        /* Owner Quote Section */
+        .owner-quote {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .owner-quote blockquote {
+            font-size: 28px;
+            font-style: italic;
+            color: #1a1a1a;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .owner-quote blockquote::before {
+            content: '"';
+            font-size: 60px;
+            color: #c9a961;
+            position: absolute;
+            left: -40px;
+            top: -10px;
+        }
+
+        .owner-quote cite {
+            display: block;
+            font-size: 18px;
+            font-style: normal;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .owner-quote cite strong {
+            color: #1a1a1a;
+            font-weight: 600;
         }
 
         .section-header {
@@ -162,16 +342,7 @@
         }
 
         .section-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: #c9a961;
-            color: white;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 50px;
-            margin-bottom: 20px;
+            display: none;
         }
 
         .section-header h2 {
@@ -187,35 +358,10 @@
             margin: 0 auto;
         }
 
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .problem-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .problem-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-
-        .problem-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
         /* Solution Section */
         .solution {
             padding: 80px 20px;
-            background: white;
+            background: #f8f8f8;
         }
 
         .solution-grid {
@@ -270,6 +416,157 @@
             color: white;
         }
 
+        /* Phygital Ecosystem */
+        .phygital-ecosystem {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .ecosystem-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .ecosystem-side {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: #f8f8f8;
+        }
+
+        .physical-side {
+            border: 3px solid #c9a961;
+        }
+
+        .digital-side {
+            border: 3px solid #1a1a1a;
+        }
+
+        .side-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .side-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .side-header h3 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .side-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            min-width: 35px;
+            height: 35px;
+            background: #c9a961;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .step-content h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 28px;
+            color: #c9a961;
+            font-weight: bold;
+        }
+
+        .ecosystem-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+
+        .connector-arrows {
+            text-align: center;
+        }
+
+        .arrow-right,
+        .arrow-left {
+            font-size: 36px;
+            color: #c9a961;
+            font-weight: bold;
+        }
+
+        .connector-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            white-space: nowrap;
+        }
+
+        .ecosystem-message {
+            margin-top: 60px;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .ecosystem-message p {
+            font-size: 22px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .ecosystem-message strong {
+            color: #c9a961;
+        }
+
         .ascension-flow {
             display: flex;
             justify-content: space-around;
@@ -306,7 +603,7 @@
         /* Testimonials/Social Proof */
         .testimonials {
             padding: 80px 20px;
-            background: #f8f8f8;
+            background: #f0f0f0;
         }
 
         .stats-grid {
@@ -337,9 +634,218 @@
             color: #666;
         }
 
+        /* Project Roadmap */
+        .roadmap {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .roadmap-value-tracker {
+            position: sticky;
+            top: 80px;
+            color: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .roadmap-value-tracker .value-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .roadmap-value-tracker .value-amount {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .roadmap-value-tracker .tracker-value {
+            font-size: 56px;
+            font-weight: bold;
+            color: #c9a961;
+            margin-bottom: 5px;
+        }
+
+        .roadmap-value-tracker .tracker-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .timeline-horizontal-container {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding-bottom: 20px;
+        }
+
+        .timeline-horizontal {
+            display: flex;
+            gap: 40px;
+            padding: 40px calc(50% - 140px);
+            position: relative;
+            min-width: max-content;
+        }
+
+        .timeline-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 140px;
+            right: 140px;
+            height: 4px;
+            background: linear-gradient(to right, #c9a961, #f4d799);
+        }
+
+        .timeline-item {
+            position: relative;
+            min-width: 280px;
+            max-width: 280px;
+        }
+
+        .timeline-quarter {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%);
+            color: #1a1a1a;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content {
+            background: #f8f8f8;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 80px;
+        }
+
+        .timeline-content h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-content ul li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .timeline-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #c9a961;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                min-width: 240px;
+                max-width: 240px;
+            }
+
+            .timeline-horizontal {
+                padding: 40px calc(50% - 120px);
+            }
+
+            .timeline-horizontal::before {
+                left: 120px;
+                right: 120px;
+            }
+        }
+
+        /* Leadership Team */
+        .team {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .team .section-header h2,
+        .team .section-header p {
+            color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+            border-color: #c9a961;
+        }
+
+        .team-member.featured {
+            background: rgba(201, 169, 97, 0.1);
+            border: 2px solid #c9a961;
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%);
+            color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .team-role {
+            color: #c9a961;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .team-bio {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         /* Investment Packages */
         .packages {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: white;
         }
 
@@ -351,7 +857,7 @@
         }
 
         .package-card {
-            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            background: #f8f8f8;
             border: 2px solid #e0e0e0;
             border-radius: 15px;
             padding: 40px 30px;
@@ -467,6 +973,7 @@
             padding: 0 30px 25px;
             color: #666;
             line-height: 1.8;
+            display: none;
         }
 
         /* Final CTA */
@@ -515,6 +1022,20 @@
                 font-size: 16px;
             }
 
+            .owner-quote blockquote {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+
+            .owner-quote blockquote::before {
+                left: -10px;
+                font-size: 40px;
+            }
+
+            .owner-quote cite {
+                font-size: 16px;
+            }
+
             .value-proposition {
                 gap: 20px;
             }
@@ -534,12 +1055,55 @@
             .package-card.featured {
                 transform: scale(1);
             }
+
+            /* Phygital Ecosystem Mobile */
+            .ecosystem-flow {
+                flex-direction: column;
+            }
+
+            .ecosystem-connector {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+
+            .connector-label {
+                font-size: 12px;
+            }
+
+            .ecosystem-side {
+                min-width: 100%;
+            }
+
+            .ecosystem-message p {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo">eSand</a>
+            <ul class="nav-menu">
+                <li><a href="#solution">About</a></li>
+                <li><a href="#value">Returns</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://dashboard.esand.com/" class="nav-secondary-cta">Sign Up</a></li>
+                <li><a href="#packages" class="nav-cta">Invest Now</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
             <div class="logo">eS</div>
             <h1>The World's First <span class="highlight">Sand-Backed</span> Cryptocurrency</h1>
@@ -575,41 +1139,13 @@
         </div>
     </section>
 
-    <!-- PROBLEM SECTION -->
-    <section class="problem" id="problem">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">1</span>
-                <h2>The Challenge Facing Modern Investors</h2>
-                <p>Traditional crypto lacks real-world backing. Commodities lack digital liquidity. You deserve both.</p>
-            </div>
-
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h3>🎲 Speculative Volatility</h3>
-                    <p>Most cryptocurrencies are purely speculative with no intrinsic value or physical backing, exposing investors to extreme volatility.</p>
-                </div>
-
-                <div class="problem-card">
-                    <h3>🔒 Illiquid Commodities</h3>
-                    <p>Physical commodity investments traditionally require massive capital, lack transparency, and offer limited liquidity.</p>
-                </div>
-
-                <div class="problem-card">
-                    <h3>📉 Missing Real Returns</h3>
-                    <p>Investors lack access to industrial-grade opportunities that generate both appreciation and passive income from real operations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- SOLUTION SECTION -->
     <section class="solution" id="solution">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">2</span>
-                <h2>How eSand Solves This</h2>
-                <p>The world's first phygital commodity—merging physical assets with digital innovation</p>
+                <span class="section-number">1</span>
+                <h2>Why eSand?</h2>
+                <p>The world's first regulatory-compliant phygital asset merging physical silica sand reserves with blockchain technology. Each token represents 1 metric ton of verified high-grade silica sand, providing secure, transparent ownership with exponential value-ascending potential—bridging real-world commodities and digital finance.</p>
             </div>
 
             <div class="solution-grid">
@@ -640,15 +1176,120 @@
                     <p>Token holders earn periodic rewards (7.5%-15%) based on actual profits from industrial operations.</p>
                     <span class="highlight-number">Real Dividends</span>
                 </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3>Full Transparency</h3>
+                    <p>Independent audits, regular reporting, and complete visibility into reserves, operations, and financial performance.</p>
+                    <span class="highlight-number">Audited</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW THE PHYGITAL ECOSYSTEM WORKS -->
+    <section class="phygital-ecosystem" id="ecosystem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">2.5</span>
+                <h2>How the Phygital Ecosystem Works</h2>
+                <p>A circular flow connecting physical operations with digital ownership</p>
+            </div>
+
+            <div class="ecosystem-flow">
+                <!-- Physical Side -->
+                <div class="ecosystem-side physical-side">
+                    <div class="side-header">
+                        <div class="side-icon">🏭</div>
+                        <h3>Physical</h3>
+                        <p class="side-label">Thesaur - RWA</p>
+                    </div>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Project Financing</h4>
+                                <p>Investor capital funds mining operations and infrastructure</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Thesaur Operations</h4>
+                                <p>Extract & process silica sand into high-value products</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Yearly Net Profits</h4>
+                                <p>Revenue from industrial sales generates real returns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Connection -->
+                <div class="ecosystem-connector">
+                    <div class="connector-arrows">
+                        <div class="arrow-right">→</div>
+                        <div class="connector-label">Circular Value Flow</div>
+                        <div class="arrow-left">←</div>
+                    </div>
+                </div>
+
+                <!-- Digital Side -->
+                <div class="ecosystem-side digital-side">
+                    <div class="side-header">
+                        <div class="side-icon">💎</div>
+                        <h3>Digital</h3>
+                        <p class="side-label">eSand - ART</p>
+                    </div>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>eSand Token Rewards</h4>
+                                <p>Profits distributed to token holders as passive income</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Value Appreciation</h4>
+                                <p>Token value rises with industrial upgrading ($30→$10K)</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Liquidity & Access</h4>
+                                <p>Trade on exchanges, redeem anytime, full transparency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Message -->
+            <div class="ecosystem-message">
+                <p>
+                    <strong>The physical generates real value and profits,<br>
+                    the digital distributes ownership, liquidity, and accessibility.</strong>
+                </p>
             </div>
         </div>
     </section>
 
     <!-- VALUE ASCENSION -->
-    <section class="value-ascension">
+    <section class="value-ascension" id="value">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">3</span>
+                <span class="section-number">2</span>
                 <h2 style="color: white;">Exponential Value Creation</h2>
                 <p style="color: rgba(255,255,255,0.8);">Watch your investment grow as raw sand transforms into high-tech materials</p>
             </div>
@@ -673,10 +1314,10 @@
     </section>
 
     <!-- SOCIAL PROOF / STATS -->
-    <section class="testimonials">
+    <section class="testimonials" id="stats">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">4</span>
+                <span class="section-number">3</span>
                 <h2>Backed by Real-World Performance</h2>
                 <p>Thesaur project metrics demonstrate massive industrial potential</p>
             </div>
@@ -688,28 +1329,179 @@
                 </div>
 
                 <div class="stat-card">
+                    <span class="stat-number">50M</span>
+                    <span class="stat-label">Tons Total Deposit</span>
+                </div>
+
+                <div class="stat-card">
                     <span class="stat-number">$22B</span>
                     <span class="stat-label">Total Projected Revenue</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">$16B</span>
+                    <span class="stat-label">Total Net Profit</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">$3.95B</span>
+                    <span class="stat-label">NPV @ 8.9% Discount Rate</span>
                 </div>
 
                 <div class="stat-card">
                     <span class="stat-number">570%</span>
                     <span class="stat-label">Internal Rate of Return</span>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="stat-card">
-                    <span class="stat-number">$84M</span>
-                    <span class="stat-label">Founder Equity Contributed</span>
+    <!-- PROJECT ROADMAP -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2>Project Roadmap</h2>
+                <p>Guiding tokenholders through every stage of physical industrial growth and digital value creation</p>
+            </div>
+
+            <!-- Value Tracker -->
+            <div class="roadmap-value-tracker">
+                <div class="tracker-value" id="currentValue">$30</div>
+                <div class="tracker-label">Avg. Ton Value</div>
+                <div class="tracker-progress" id="progressLabel">Project Launch</div>
+            </div>
+
+            <!-- Horizontal Timeline -->
+            <div class="timeline-horizontal-container">
+                <div class="timeline-horizontal">
+                    <div class="timeline-item" data-value="30">
+                        <div class="timeline-quarter">Q3 2025</div>
+                        <div class="timeline-content">
+                            <h3>Project Launch & Permitting</h3>
+                            <ul>
+                                <li>eSand Token Launch</li>
+                                <li>Permitting Initiation</li>
+                                <li>Site Surveys & Environmental Impact Studies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-value="75">
+                        <div class="timeline-quarter">Q4 2025</div>
+                        <div class="timeline-content">
+                            <h3>Regulatory & Infrastructure</h3>
+                            <ul>
+                                <li>MiCA White Paper Authorization</li>
+                                <li>Infrastructure Establishment</li>
+                                <li>Equipment Procurement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item highlight" data-value="200">
+                        <div class="timeline-quarter">Q1 2026</div>
+                        <div class="timeline-content">
+                            <h3>Market Entry & Production Setup</h3>
+                            <ul>
+                                <li>CEX & DEX Exchange Listings</li>
+                                <li>Processing Plant Installation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-value="400">
+                        <div class="timeline-quarter">Q2 2026</div>
+                        <div class="timeline-content">
+                            <h3>Production Commencement</h3>
+                            <ul>
+                                <li>Technological Testing & Optimization</li>
+                                <li>Staff Hiring & Training</li>
+                                <li>Extraction Operations Begin</li>
+                                <li>Q1 Rewards Disbursement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item highlight" data-value="900">
+                        <div class="timeline-quarter">Q3-Q4 2026</div>
+                        <div class="timeline-content">
+                            <h3>Full-Scale Production</h3>
+                            <ul>
+                                <li>Heavy Minerals Production</li>
+                                <li>HPQS & Construction Sand Output</li>
+                                <li>Q4 Rewards Disbursement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-value="3000">
+                        <div class="timeline-quarter">2027-2028</div>
+                        <div class="timeline-content">
+                            <h3>Phase 2: Value Ascension</h3>
+                            <ul>
+                                <li>Silicon Ingot Plant Procurement</li>
+                                <li>Ingot Production Commencement</li>
+                                <li>Silicon Wafer Production</li>
+                                <li>Quarterly Rewards Distribution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERSHIP TEAM -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2>Leadership Team</h2>
+                <p>The governance team securing resources, building technology, and delivering value to tokenholders</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">ZL</div>
+                    <h3>Zoltan Losonczi, MBA</h3>
+                    <p class="team-role">Chairman of the Board</p>
+                    <p class="team-bio">Performance-driven Company Owner with 24+ years of domestic and international administrative experience. Expert in strategic planning, investments coordination, and financial management across multiple growth-oriented enterprises.</p>
                 </div>
 
-                <div class="stat-card">
-                    <span class="stat-number">€200M</span>
-                    <span class="stat-label">Annual Offtake Agreements</span>
+                <div class="team-member">
+                    <div class="team-avatar">SS</div>
+                    <h3>Sadri Sali, Esq</h3>
+                    <p class="team-role">CRO, Head of Legal</p>
+                    <p class="team-bio">Among the first to earn a Blockchain-focused LL.M. with expertise in EU regulatory frameworks. Provides internationally recognized compliance solutions across blockchain and cryptocurrency matters under MiCA.</p>
                 </div>
 
-                <div class="stat-card">
-                    <span class="stat-number">50M</span>
-                    <span class="stat-label">Token Supply Cap</span>
+                <div class="team-member">
+                    <div class="team-avatar">DR</div>
+                    <h3>Dan Valentin Rotar, BEc</h3>
+                    <p class="team-role">CEO</p>
+                    <p class="team-bio">Accomplished Chief Executive Officer with 18+ years in aggregates extraction and processing. Directed fine sand production operations serving major industry players.</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">LL</div>
+                    <h3>Lajos Losonczi, PhD</h3>
+                    <p class="team-role">Chief Science Officer</p>
+                    <p class="team-bio">Renowned semiconductor expert with 47-year career. Holds numerous patents in semiconductor technology with deep understanding of materials science and device fabrication.</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">MR</div>
+                    <h3>Mircea Dragos Radu, PhD</h3>
+                    <p class="team-role">CFO</p>
+                    <p class="team-bio">38 years in organizational administration with 22 years as accounting expert and tax consultant. Proven track record in optimizing financial performance.</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">TV</div>
+                    <h3>Tudor Vesa, MSc</h3>
+                    <p class="team-role">CTO/CIO, Head of Dev Team</p>
+                    <p class="team-bio">Software architect and IT entrepreneur leading custom multi-channel integrated solutions. MSc in Computer Science with Juris Doctor degree bridging technology and law.</p>
                 </div>
             </div>
         </div>
@@ -719,15 +1511,25 @@
     <section class="packages" id="packages">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">5</span>
+                <span class="section-number">6</span>
                 <h2>Early Investor Packages</h2>
                 <p>Secure your position with exclusive pricing and equity rights</p>
+            </div>
+
+            <!-- Discount Banner (hidden by default, shown via JS if discount exists) -->
+            <div id="discountBanner" style="display: none; background: linear-gradient(135deg, #c9a961 0%, #d4af6a 100%); padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px;">
+                <p style="font-size: 22px; font-weight: 700; color: white; margin: 0;">
+                    🎉 <span id="discountPercentage">15</span>% Discount Applied! Your personalized pricing is active
+                </p>
             </div>
 
             <div class="packages-grid">
                 <div class="package-card">
                     <h3>Super Deal</h3>
-                    <div class="package-price">$15</div>
+                    <div class="package-price-wrapper">
+                        <div class="package-price-original" style="display: none; text-decoration: line-through; color: #999; font-size: 20px; margin-bottom: 5px;">$15</div>
+                        <div class="package-price" data-original-price="15">$15</div>
+                    </div>
                     <div class="package-detail">per eSand token</div>
                     <ul class="package-features">
                         <li>2,000,000 tokens available</li>
@@ -736,13 +1538,17 @@
                         <li>Priority allocation</li>
                         <li>Early rewards access</li>
                     </ul>
-                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                    <a href="questionnaire.html" class="cta-secondary discount-cta" style="margin-top: 20px;">Unlock 15% Discount</a>
+                    <a href="https://dashboard.esand.com/" class="cta-primary" style="margin-top: 10px;">Get Started</a>
                 </div>
 
                 <div class="package-card featured">
                     <div class="package-badge">MOST POPULAR</div>
                     <h3>Plus Deal</h3>
-                    <div class="package-price">$25</div>
+                    <div class="package-price-wrapper">
+                        <div class="package-price-original" style="display: none; text-decoration: line-through; color: #999; font-size: 20px; margin-bottom: 5px;">$25</div>
+                        <div class="package-price" data-original-price="25">$25</div>
+                    </div>
                     <div class="package-detail">per eSand token</div>
                     <ul class="package-features">
                         <li>1,000,000 tokens available</li>
@@ -751,12 +1557,16 @@
                         <li>Enhanced liquidity</li>
                         <li>Priority support</li>
                     </ul>
-                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                    <a href="questionnaire.html" class="cta-secondary discount-cta" style="margin-top: 20px;">Unlock 15% Discount</a>
+                    <a href="https://dashboard.esand.com/" class="cta-primary" style="margin-top: 10px;">Get Started</a>
                 </div>
 
                 <div class="package-card">
                     <h3>Premium Deal</h3>
-                    <div class="package-price">$30</div>
+                    <div class="package-price-wrapper">
+                        <div class="package-price-original" style="display: none; text-decoration: line-through; color: #999; font-size: 20px; margin-bottom: 5px;">$30</div>
+                        <div class="package-price" data-original-price="30">$30</div>
+                    </div>
                     <div class="package-detail">per eSand token</div>
                     <ul class="package-features">
                         <li>2,000,000 tokens available</li>
@@ -765,18 +1575,31 @@
                         <li>Immediate liquidity</li>
                         <li>VIP access</li>
                     </ul>
-                    <a href="#contact" class="cta-primary" style="margin-top: 20px;">Get Started</a>
+                    <a href="questionnaire.html" class="cta-secondary discount-cta" style="margin-top: 20px;">Unlock 15% Discount</a>
+                    <a href="https://dashboard.esand.com/" class="cta-primary" style="margin-top: 10px;">Get Started</a>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8f8f8; border-radius: 15px;">
-                <h3 style="font-size: 28px; margin-bottom: 20px;">Institutional & Large Investors</h3>
-                <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+            <div style="text-align: center; margin-top: 60px; padding: 50px; background: white; border: 2px solid #ddd; border-radius: 15px;">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: #c9a961;">Institutional & Large Investors</h3>
+                <p style="font-size: 18px; color: #1a1a1a; margin-bottom: 30px;">
                     Custom packages available from $1M to $40M with enhanced equity participation (1%-30%)<br>
                     ROI projections: 971% in 5 years | 2,530% in 10 years | 13,752% in 33 years
                 </p>
-                <a href="#contact" class="cta-primary">Request Custom Proposal</a>
+                <a href="javascript:void(0)" class="cta-primary">Request Custom Proposal</a>
             </div>
+        </div>
+    </section>
+
+    <!-- OWNER QUOTE SECTION -->
+    <section class="owner-quote">
+        <div class="container">
+            <blockquote>
+                This is more than a project, it is a mission to build a lasting legacy.
+            </blockquote>
+            <cite>
+                <strong>Zoltan Losonczi</strong>, Chairman of the Board, Thesaur & eSand
+            </cite>
         </div>
     </section>
 
@@ -784,7 +1607,7 @@
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">6</span>
+                <span class="section-number">7</span>
                 <h2>Frequently Asked Questions</h2>
                 <p>Everything you need to know about investing in eSand</p>
             </div>
@@ -848,7 +1671,7 @@
             <h2>Secure Your Position in the Future of Phygital Assets</h2>
             <p>Limited token supply. First-come, first-served pricing tiers.</p>
             <div>
-                <a href="mailto:invest@esand.io" class="cta-primary">Schedule a Call</a>
+                <a href="#packages" class="cta-primary">Invest Now</a>
                 <a href="#" class="cta-secondary">Download Full Whitepaper</a>
             </div>
             <p style="margin-top: 40px; font-size: 16px; opacity: 0.7;">
@@ -860,29 +1683,98 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 eSand / Thesaur Quantum Minerals AG. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 14px;">
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms & Conditions</a> |
-                <a href="#">Risk Disclosure</a> |
-                <a href="mailto:invest@esand.io">invest@esand.io</a>
-            </p>
-            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
-                This is not financial advice. Past performance does not guarantee future results. Cryptocurrency investments carry risk.
-            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
+                <div>
+                    <h3 style="color: #c9a961; margin-bottom: 15px; font-size: 20px;">eSand</h3>
+                    <p style="font-size: 14px; opacity: 0.8; line-height: 1.6;">
+                        The world's first sand-backed cryptocurrency. Real assets, real value, real returns.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: #c9a961; margin-bottom: 15px; font-size: 16px;">Contact</h4>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <strong>Email:</strong> <a href="mailto:invest@esand.io" style="color: white; text-decoration: none;">invest@esand.io</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <strong>Support:</strong> <a href="mailto:support@esand.io" style="color: white; text-decoration: none;">support@esand.io</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <strong>Company:</strong> Thesaur Quantum Minerals AG
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: #c9a961; margin-bottom: 15px; font-size: 16px;">Quick Links</h4>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#solution" style="color: white; text-decoration: none;">About eSand</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#roadmap" style="color: white; text-decoration: none;">Project Roadmap</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#team" style="color: white; text-decoration: none;">Leadership Team</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#packages" style="color: white; text-decoration: none;">Investment Packages</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#faq" style="color: white; text-decoration: none;">FAQ</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="https://dashboard.esand.com/" style="color: white; text-decoration: none;">Dashboard</a>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: #c9a961; margin-bottom: 15px; font-size: 16px;">Legal</h4>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#" style="color: white; text-decoration: none;">Terms & Conditions</a>
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        <a href="#" style="color: white; text-decoration: none;">Risk Disclosure</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center;">
+                <p>&copy; 2025 eSand / Thesaur Quantum Minerals AG. All rights reserved.</p>
+                <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
+                    This is not financial advice. Past performance does not guarantee future results. Cryptocurrency investments carry risk.
+                </p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    // Account for fixed nav height
+                    const navHeight = document.querySelector('.main-nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -905,6 +1797,241 @@
                 }
             });
         });
+    </script>
+
+    <!-- Dynamic Content Loading -->
+    <script src="js/content.js"></script>
+    <script>
+        // Load personalized content from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply discount from localStorage
+            const discount = localStorage.getItem('eSandDiscount');
+            if (discount && discount !== '0') {
+                const discountPercent = parseInt(discount);
+
+                // Show discount banner
+                const discountBanner = document.getElementById('discountBanner');
+                const discountPercentage = document.getElementById('discountPercentage');
+                if (discountBanner && discountPercentage) {
+                    discountPercentage.textContent = discountPercent;
+                    discountBanner.style.display = 'block';
+                }
+
+                // Apply discount to all package prices
+                document.querySelectorAll('.package-price').forEach(priceElement => {
+                    const originalPrice = parseFloat(priceElement.dataset.originalPrice);
+                    if (originalPrice) {
+                        const discountedPrice = originalPrice * (1 - discountPercent / 100);
+
+                        // Show original price with strikethrough
+                        const originalPriceElement = priceElement.previousElementSibling;
+                        if (originalPriceElement && originalPriceElement.classList.contains('package-price-original')) {
+                            originalPriceElement.style.display = 'block';
+                        }
+
+                        // Update to discounted price
+                        priceElement.textContent = `$${discountedPrice.toFixed(2)}`;
+                    }
+                });
+
+                // Hide "Unlock Discount" buttons if discount is already applied
+                document.querySelectorAll('.discount-cta').forEach(button => {
+                    button.style.display = 'none';
+                });
+            } else {
+                // Show "Unlock Discount" buttons if no discount applied
+                document.querySelectorAll('.discount-cta').forEach(button => {
+                    button.style.display = 'inline-block';
+                });
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const personality = urlParams.get('personality');
+            const socialClass = urlParams.get('class');
+
+            // Only apply personalization if both parameters are present
+            if (personality && socialClass) {
+                const content = getContent(personality, socialClass);
+
+                // If invalid profile, do nothing (keep default HTML content)
+                if (!content) return;
+
+                // Update hero section
+                const headline = document.querySelector('.hero h1');
+                const subheadline = document.querySelector('.hero .subtext');
+                const cta = document.querySelector('.hero .cta-primary');
+                const secondaryCta = document.querySelector('.hero .cta-secondary');
+
+                if (headline && content.hero.headline) {
+                    headline.innerHTML = content.hero.headline;
+                }
+                // Tagline stays static: "Real Sand. Real Value. Real Returns."
+                if (subheadline && content.hero.subheadline) {
+                    subheadline.textContent = content.hero.subheadline;
+                }
+                // Primary CTA always stays "View Investment Packages" and links to #packages
+                // (no need to update - it's already set in HTML)
+
+                // Update secondary CTA to use content.hero.cta and point to solution section
+                if (secondaryCta && content.hero.cta) {
+                    secondaryCta.textContent = content.hero.cta;
+                    secondaryCta.setAttribute('href', '#solution');
+                }
+
+                // Update owner quote section
+                const ownerQuoteElement = document.querySelector('.owner-quote blockquote');
+                const ownerQuoteCite = document.querySelector('.owner-quote cite');
+                if (ownerQuoteElement && content.quote) {
+                    if (typeof content.quote === 'object') {
+                        ownerQuoteElement.textContent = content.quote.text;
+                        if (ownerQuoteCite && content.quote.author) {
+                            let authorText = `<strong>${content.quote.author}</strong>`;
+                            if (content.quote.authorTitle) {
+                                authorText += `, ${content.quote.authorTitle}`;
+                            }
+                            ownerQuoteCite.innerHTML = authorText;
+                        }
+                    } else {
+                        ownerQuoteElement.textContent = content.quote;
+                    }
+                }
+
+                // Update benefits/solution section
+                if (content.benefits) {
+                    const solutionCards = document.querySelectorAll('.solution-card');
+                    const benefitKeys = ['primary', 'secondary', 'tertiary', 'quaternary', 'quinary'];
+
+                    benefitKeys.forEach((key, index) => {
+                        if (content.benefits[key] && solutionCards[index]) {
+                            const iconElement = solutionCards[index].querySelector('.solution-icon');
+                            const titleElement = solutionCards[index].querySelector('h3');
+                            const descElement = solutionCards[index].querySelector('p');
+                            const highlightElement = solutionCards[index].querySelector('.highlight-number');
+
+                            if (iconElement && content.benefits[key].icon) {
+                                iconElement.textContent = content.benefits[key].icon;
+                            }
+                            if (titleElement) {
+                                titleElement.textContent = content.benefits[key].title;
+                            }
+                            if (descElement) {
+                                descElement.textContent = content.benefits[key].description;
+                            }
+                            if (highlightElement && content.benefits[key].highlight) {
+                                highlightElement.textContent = content.benefits[key].highlight;
+                            }
+                        }
+                    });
+                }
+
+                // Apply 15% discount to package prices
+                const packagePrices = document.querySelectorAll('.package-price');
+                const originalPrices = [15, 25, 30]; // Super, Plus, Premium
+
+                packagePrices.forEach((priceElement, index) => {
+                    if (originalPrices[index]) {
+                        const discountedPrice = originalPrices[index] * 0.85;
+                        const originalPrice = originalPrices[index];
+
+                        priceElement.innerHTML = `
+                            <span style="text-decoration: line-through; opacity: 0.5; font-size: 0.6em;">$${originalPrice}</span><br>
+                            $${discountedPrice.toFixed(2)}
+                        `;
+                    }
+                });
+
+                // Add discount badge to packages section
+                const packagesHeader = document.querySelector('#packages .section-header');
+                if (packagesHeader && !document.querySelector('.discount-applied-badge')) {
+                    const discountBadge = document.createElement('div');
+                    discountBadge.className = 'discount-applied-badge';
+                    discountBadge.innerHTML = '🎉 <strong>15% Discount Applied!</strong> Your personalized pricing is active';
+                    discountBadge.style.cssText = 'background: linear-gradient(135deg, #c9a961 0%, #f4d799 100%); color: #1a1a1a; padding: 15px 30px; border-radius: 10px; margin-top: 20px; font-size: 18px; font-weight: 600; text-align: center;';
+                    packagesHeader.appendChild(discountBadge);
+                }
+
+                // Hide "Unlock 15% Discount" buttons since discount is already applied
+                const unlockDiscountButtons = document.querySelectorAll('a[href="questionnaire.html"]');
+                unlockDiscountButtons.forEach(button => {
+                    if (button.textContent.includes('Unlock 15% Discount')) {
+                        button.style.display = 'none';
+                    }
+                });
+
+                // Update final CTA section
+                const finalCtaHeading = document.querySelector('.final-cta h2');
+                const finalCtaSubtext = document.querySelector('.final-cta p');
+                const finalCtaButton = document.querySelector('.final-cta .cta-secondary');
+
+                if (finalCtaHeading && content.transition) {
+                    // h2 uses transition.title
+                    if (typeof content.transition === 'object') {
+                        finalCtaHeading.textContent = content.transition.title;
+                    } else {
+                        // Fallback for old string format - extract title before arrow
+                        finalCtaHeading.textContent = content.transition.split('→')[0].trim();
+                    }
+                }
+                if (finalCtaSubtext && content.narrative) {
+                    // p uses narrative
+                    finalCtaSubtext.textContent = content.narrative;
+                }
+                if (finalCtaButton && content.transition) {
+                    // Secondary button uses transition.cta
+                    if (typeof content.transition === 'object') {
+                        finalCtaButton.textContent = content.transition.cta;
+                    } else {
+                        // Fallback for old string format - extract cta after arrow
+                        finalCtaButton.textContent = content.transition.split('→')[1].trim();
+                    }
+                }
+            }
+        });
+
+        // Roadmap Value Tracker
+        const timelineContainer = document.querySelector('.timeline-horizontal-container');
+        const currentValueElement = document.getElementById('currentValue');
+        const progressLabelElement = document.getElementById('progressLabel');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        if (timelineContainer && currentValueElement && progressLabelElement) {
+            timelineContainer.addEventListener('scroll', () => {
+                const scrollLeft = timelineContainer.scrollLeft;
+                const containerWidth = timelineContainer.offsetWidth;
+                const scrollWidth = timelineContainer.scrollWidth;
+
+                // Calculate which milestone is most visible
+                let currentMilestone = null;
+                let minDistance = Infinity;
+
+                timelineItems.forEach((item) => {
+                    const itemLeft = item.offsetLeft;
+                    const itemCenter = itemLeft + (item.offsetWidth / 2);
+                    const viewportCenter = scrollLeft + (containerWidth / 2);
+                    const distance = Math.abs(itemCenter - viewportCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        currentMilestone = item;
+                    }
+                });
+
+                if (currentMilestone) {
+                    const value = currentMilestone.getAttribute('data-value');
+                    const quarter = currentMilestone.querySelector('.timeline-quarter').textContent;
+                    const title = currentMilestone.querySelector('h3').textContent;
+
+                    // Format value with comma for thousands
+                    const formattedValue = parseInt(value).toLocaleString();
+                    currentValueElement.textContent = `$${formattedValue}`;
+                    progressLabelElement.textContent = title;
+
+                    // Update active state
+                    timelineItems.forEach(item => item.classList.remove('active'));
+                    currentMilestone.classList.add('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>

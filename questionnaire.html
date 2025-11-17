@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Discount - eSand Questionnaire</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="questionnaire-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+
+        <!-- Discount Badge -->
+        <div class="discount-badge" id="discountBadge">EARN UP TO 15% OFF</div>
+
+        <!-- Question 1: Personality Type -->
+        <div class="question active" id="question1">
+            <h2 class="question-title">Which statement resonates most with you?</h2>
+            <p>Select the mindset that best describes your approach to investments and opportunities.</p>
+
+            <div class="options">
+                <div class="option" data-value="thinker">
+                    <p>I need to understand how it works before I commit</p>
+                </div>
+                <div class="option" data-value="persister">
+                    <p>I value commitment, integrity, and long-term vision</p>
+                </div>
+                <div class="option" data-value="harmoniser">
+                    <p>I care about people, community, and positive impact</p>
+                </div>
+                <div class="option" data-value="promoter">
+                    <p>I love action, excitement, and winning opportunities</p>
+                </div>
+                <div class="option" data-value="rebel">
+                    <p>I like things spontaneous, fun, and unconventional</p>
+                </div>
+                <div class="option" data-value="imaginer">
+                    <p>I'm drawn to big visions, innovation, and possibilities</p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-secondary" id="backBtn1" style="display: none;">
+                    ← Back
+                </button>
+                <button class="btn btn-secondary" id="skipQuestion1">
+                    Skip
+                </button>
+            </div>
+        </div>
+
+        <!-- Question 2: Social Class (Dynamic based on Q1) -->
+        <div class="question" id="question2">
+            <h2 class="question-title" id="question2Title">Which best describes your current situation?</h2>
+            <p id="question2Subtitle"></p>
+
+            <div class="options" id="question2Options">
+                <!-- Options will be dynamically inserted -->
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-secondary" id="backBtn2">
+                    ← Back
+                </button>
+                <button class="btn btn-secondary" id="skipQuestion2">
+                    Skip
+                </button>
+            </div>
+        </div>
+
+        <!-- Question 3: Engagement Option -->
+        <div class="question" id="question3">
+            <h2 class="question-title">How would you like to maximize your benefits?</h2>
+            <p>Choose one option to unlock additional rewards</p>
+
+            <div class="options">
+                <div class="option" data-value="share">
+                    <p>Share eSand on social media and unlock bonus rewards</p>
+                </div>
+                <div class="option" data-value="lock">
+                    <p>Lock tokens for 18 months and get 70% discount on Super package</p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-secondary" id="backBtn3">
+                    ← Back
+                </button>
+                <button class="btn btn-secondary" id="skipQuestion3">
+                    Skip
+                </button>
+            </div>
+        </div>
+
+        <!-- Email Capture -->
+        <div class="question" id="emailCapture">
+            <h2 class="question-title" id="emailCaptureTitle">Claim Your 15% Discount</h2>
+            <p>Enter your details to unlock your personalized investment opportunity</p>
+
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country Code (Optional)</label>
+                    <input type="text" id="country" name="country" placeholder="e.g., US, UK, DE">
+                </div>
+
+                <div class="button-container" style="margin-top: 20px;">
+                    <button class="btn btn-secondary" id="backBtn4">
+                        ← Back
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        View My Personalized Offer →
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>

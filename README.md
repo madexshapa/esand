@@ -88,22 +88,56 @@ Investors benefit from three revenue streams:
 
 ## 🌐 Technology Stack
 
-This landing page is built with:
+This website is built with:
 - HTML5
-- CSS3 (Modern gradients, flexbox, grid)
+- CSS3 (Wireframe design - black/white/gray)
 - Vanilla JavaScript
 - Responsive design (mobile-first)
-- Interactive FAQ accordion
-- Smooth scroll navigation
+- LocalStorage for personalization
+- 3-part funnel architecture
 
 ## 📁 Project Structure
 
 ```
 eSand/
-├── index.html         # Main landing page
-├── README.md          # This file
-└── docs/              # Additional documentation (coming soon)
+├── index.html              # Main premium landing page
+├── questionnaire.html      # 3-question profiling system
+├── main.html               # Personalized landing (same design as index.html)
+├── index-backup.html       # Backup wireframe landing
+├── main-backup.html        # Backup 7-chapter main website
+├── css/
+│   └── styles.css          # Wireframe styling (for questionnaire)
+├── js/
+│   ├── questionnaire.js    # Question flow logic
+│   └── content.js          # 18 content variations
+├── README.md               # This file
+└── .gitignore              # Git ignore rules
 ```
+
+## 🎯 Website Flow
+
+1. **Landing Page** ([index.html](index.html))
+   - Premium designed landing page
+   - Complete information: team, metrics, roadmap, FAQ, investment tiers
+   - Two paths:
+     - Direct investment: "View Investment Packages" → [dashboard.esand.com](https://dashboard.esand.com)
+     - Personalization: "Get Personalized Offer" → [questionnaire.html](questionnaire.html)
+
+2. **Questionnaire** ([questionnaire.html](questionnaire.html))
+   - Question 1: Personality type (6 options: Thinker, Persister, Harmoniser, Promoter, Rebel, Imaginer)
+   - Question 2: Social class (3 options per personality: Working, Middle, Elite)
+   - Question 3: Engagement option (share or 18-month vesting lock)
+   - Progressive discount: 5% → 10% → 15%
+   - Email capture
+   - Redirects to: [main.html](main.html) with personalized content
+
+3. **Personalized Landing** ([main.html](main.html))
+   - Same premium design as [index.html](index.html)
+   - Personalized content based on questionnaire profile (18 variations):
+     - Custom headline and tagline
+     - Personality-matched quote
+     - Tailored narrative and benefits
+   - Direct to investment: [dashboard.esand.com](https://dashboard.esand.com)
 
 ## 🔗 Links
 
