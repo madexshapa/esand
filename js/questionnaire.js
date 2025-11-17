@@ -180,8 +180,8 @@ function setupQuestion2() {
 
             // Auto-advance after short delay
             setTimeout(() => {
-                // Q2 adds 5% discount (5% → 10%)
-                const newDiscount = Math.min(state.discount + 5, 15);
+                // Q2 adds 5% discount to Q1's discount (5% → 10%)
+                const newDiscount = Math.min(state.discountHistory.afterQ1 + 5, 15);
                 state.discountHistory.afterQ2 = newDiscount; // Track Q2 discount
                 updateProgress(66, newDiscount);
                 setupQuestion3();
@@ -206,8 +206,8 @@ function setupQuestion3() {
 
             // Auto-advance after short delay
             setTimeout(() => {
-                // Q3 adds 5% discount (10% → 15%, or 0% → 5% if Q1 and Q2 were skipped)
-                const newDiscount = Math.min(state.discount + 5, 15);
+                // Q3 adds 5% discount to Q2's discount (10% → 15%, or 0% → 5% if Q1 and Q2 were skipped)
+                const newDiscount = Math.min(state.discountHistory.afterQ2 + 5, 15);
                 state.discountHistory.afterQ3 = newDiscount; // Track Q3 discount
                 updateProgress(100, newDiscount);
                 showQuestion(4);
@@ -317,14 +317,16 @@ function setupBackButton() {
             }
 
             // Update progress and discount based on previous question
+            // Show the discount earned UP TO AND INCLUDING that question
             if (prevQuestion === 1) {
-                updateProgress(0, 0); // Before Q1 = starting discount (0%)
+                // Show discount after Q1 (5% if answered, 0% if not)
+                updateProgress(0, state.discountHistory.afterQ1);
             } else if (prevQuestion === 2) {
-                // After Q1, before Q2 = use Q1's earned discount
-                updateProgress(33, state.discountHistory.afterQ1);
+                // Show discount after Q2 (includes Q1+Q2 or just Q1 if Q2 skipped)
+                updateProgress(33, state.discountHistory.afterQ2);
             } else if (prevQuestion === 3) {
-                // After Q2, before Q3 = use Q2's earned discount
-                updateProgress(66, state.discountHistory.afterQ2);
+                // Show discount after Q3 (includes all earned discounts)
+                updateProgress(66, state.discountHistory.afterQ3);
             }
 
             showQuestion(prevQuestion);
@@ -339,46 +341,58 @@ function setupBackButton() {
 }
 
 function setupSkipButtons() {
-    // Skip Question 1 - keep 0% discount, go straight to Q3
+    // Skip Question 1 - reset to 0% discount, go straight to Q3
     document.getElementById('skipQuestion1').addEventListener('click', () => {
+        // Remove selected class from Q1 options
+        document.querySelectorAll('#question1 .option').forEach(opt => opt.classList.remove('selected'));
+
         // Clear Q1 and Q2 answers when skipping Q1
         state.answers.personality = null;
         state.answers.socialClass = null;
 
         state.discountHistory.afterQ1 = 0; // Track that Q1 was skipped
         state.discountHistory.afterQ2 = 0; // Also skip Q2 since it depends on Q1
-        updateProgress(66, state.discount); // Keep current discount (0%)
+        state.discount = 0; // Reset discount to 0%
+        updateProgress(66, 0); // Reset to 0% discount
         setupQuestion3();
         showQuestion(3);
     });
 
-    // Skip Question 2 - keep current discount (Note: This should not be possible if Q1 was answered)
+    // Skip Question 2 - keep discount from Q1 only
     document.getElementById('skipQuestion2').addEventListener('click', () => {
+        // Remove selected class from Q2 options
+        document.querySelectorAll('#question2 .option').forEach(opt => opt.classList.remove('selected'));
+
         // Clear Q2 answer when skipping Q2
         state.answers.socialClass = null;
 
-        state.discountHistory.afterQ2 = state.discount; // Track Q2 skipped
-        updateProgress(66, state.discount); // Keep current discount
+        // When skipping Q2, only keep Q1's discount (lose Q2's 5%)
+        state.discountHistory.afterQ2 = state.discountHistory.afterQ1;
+        updateProgress(66, state.discountHistory.afterQ1);
         setupQuestion3();
         showQuestion(3);
     });
 
-    // Skip Question 3 - keep current discount
+    // Skip Question 3 - keep discount from Q1/Q2 only
     document.getElementById('skipQuestion3').addEventListener('click', () => {
+        // Remove selected class from Q3 options
+        document.querySelectorAll('#question3 .option').forEach(opt => opt.classList.remove('selected'));
+
         // Clear Q3 answer when skipping Q3
         state.answers.engagement = null;
 
-        state.discountHistory.afterQ3 = state.discount; // Track Q3 skipped
+        // When skipping Q3, only keep Q1+Q2's discount (lose Q3's 5%)
+        state.discountHistory.afterQ3 = state.discountHistory.afterQ2;
 
         // If user skipped all 3 questions, redirect to index without email form
         if (!state.answers.personality && !state.answers.socialClass && !state.answers.engagement) {
             // Save minimal data to localStorage
-            localStorage.setItem('eSandDiscount', state.discount);
+            localStorage.setItem('eSandDiscount', state.discountHistory.afterQ2);
             // Redirect directly to index page
             window.location.href = 'index.html';
         } else {
             // Show email form if at least one question was answered
-            updateProgress(100, state.discount);
+            updateProgress(100, state.discountHistory.afterQ2);
             showQuestion(4);
         }
     });
