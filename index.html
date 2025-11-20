@@ -1993,30 +1993,6 @@
                     });
                 }
 
-                // Apply 15% discount to package prices
-                const packagePrices = document.querySelectorAll('.package-price');
-                const originalPrices = [15, 25, 30]; // Super, Plus, Premium
-
-                packagePrices.forEach((priceElement, index) => {
-                    if (originalPrices[index]) {
-                        const discountedPrice = originalPrices[index] * 0.85;
-                        const originalPrice = originalPrices[index];
-
-                        priceElement.innerHTML = `
-                            <span style="text-decoration: line-through; opacity: 0.5; font-size: 0.6em;">$${originalPrice}</span><br>
-                            $${discountedPrice.toFixed(2)}
-                        `;
-                    }
-                });
-
-                // Hide "Unlock 15% Discount" buttons since discount is already applied
-                const unlockDiscountButtons = document.querySelectorAll('a[href="questionnaire.html"]');
-                unlockDiscountButtons.forEach(button => {
-                    if (button.textContent.includes('Unlock 15% Discount')) {
-                        button.style.display = 'none';
-                    }
-                });
-
                 // Update final CTA section
                 const finalCtaHeading = document.querySelector('.final-cta h2');
                 const finalCtaSubtext = document.querySelector('.final-cta p');
